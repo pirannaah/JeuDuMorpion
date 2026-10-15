@@ -270,13 +270,10 @@ public class GrilleUnitTest {
         Assertions.assertEquals(joueur, grille.gagnant());
     }
 
-    // À ce stade, toutes les méthodes accessible de Grille sont testées, il reste les méthodes private qui ne sont
-    // pas encore testées. Pour tester les méthodes privées, 2 possibilités sont envisageables :
-    // - tester la méthode privée au travers d'une méthode publique qui appel la méthode. Ici la méthode estGagnée pourrait
-    //   remplir cet office étant donné sa simplicité.
-    // - déléguer les méthodes privées à une autre classe (dans laquelle les méthodes ne seront plus privées). Les méthodes
-    //   sont privées dans la classe Grille car elles ne font pas partie des services que fournie la classe Grille. On peut
-    //   par contre déléguer ce service à une autre classe que la classe Grille pourra ensuite utiliser.
-    // La classe GrilleTools accueille les méthodes ligneGagnante, colonneGagnante et diagonaleGagnante qui étaient
-    // définies dans Grille. Dorénavant, Grille fait appel à GrilleTools pour vérifier ligneGagnante, colonneGagnante ou diagonaleGagnante
+    @Test
+    public void testDisplay() {
+        Grille grille = new Grille();
+        grille.joue(new Joueur("X"), new Coordonnee(0, 0));
+        Assertions.assertDoesNotThrow(() -> grille.display());
+    }
 }
