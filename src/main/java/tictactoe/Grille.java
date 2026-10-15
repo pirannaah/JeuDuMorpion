@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=pirannaah_JeuDuMorpion \
+  -Dsonar.organization=pirannaah \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.token=62d81334102258335cc66ad4fde539dbdfa28b65
+ */
+
 public class Grille {
 
     private Joueur[] grille = new Joueur[9];
