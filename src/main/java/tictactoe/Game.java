@@ -26,12 +26,12 @@ public class Game {
         Joueur otherPlayer;
         joueur1.setOpponent(joueur2);
         joueur2.setOpponent(joueur1);
-        if (random.nextInt()%2 == 0) {
+        if (random.nextBoolean()) {
             actifPlayer = joueur1;
             otherPlayer = joueur2;
         } else {
-            actifPlayer = joueur1;
-            otherPlayer = joueur2;
+            actifPlayer = joueur2;
+            otherPlayer = joueur1;
         }
         while (!isWin()) {
             Manche manche = mancheFactory.createManche();

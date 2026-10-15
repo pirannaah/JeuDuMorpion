@@ -17,17 +17,27 @@ public class Human implements Joueur {
     public void joue(Grille grille)  {
         boolean saisieOK;
         do {
-            saisieOK = true;
+            saisieOK = false;
             System.out.print("coordonnée : ");
             String line = scanner.nextLine();
             String[] split = line.split(",");
-            int ligne = Integer.valueOf(split[0]) - 1;
-            int colone = Integer.valueOf(split[1]) -1;
+            if (split.length < 2) {
+                System.out.println("Format invalide. Entrez ligne,colonne (ex: 1,2)");
+                continue;
+            }
             try {
-                grille.joue(ligne*3+colone, this);
+                int ligne = Integer.parseInt(split[0].trim()) - 1;
+                int colone = Integer.parseInt(split[1].trim()) - 1;
+                if (ligne >= 0 && ligne < 3 && colone >= 0 && colone < 3) {
+                    grille.joue(ligne * 3 + colone, this);
+                    saisieOK = true;
+                } else {
+                    System.out.println("Coordonnées hors limites (1 à 3)");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Format numérique invalide");
             } catch (CaseOccupeeException e) {
                 System.out.println("Case occupée, rejouez");
-                saisieOK = false;
             }
         } while (!saisieOK);
     }
